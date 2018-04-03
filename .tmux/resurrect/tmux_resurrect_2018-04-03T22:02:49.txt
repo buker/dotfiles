@@ -1,0 +1,4 @@
+pane	0	1	:vim	1	:*Z	1	:/home/buker/Workspace/dotfiles	0	zsh	:
+pane	0	1	:vim	1	:*Z	2	:/home/buker	1	vim	:vim
+window	0	1	1	:*Z	df02,197x44,0,0[197x22,0,0,1,197x21,0,23,2]
+state	0	

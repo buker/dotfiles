@@ -51,7 +51,12 @@ ZSH_THEME="bullet-train"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search tmux tmuxinator vagrant debian docker)
+plugins=(git terraform docker aws debian sudo kubectl )
+#PLUGIN CONFIGURATION
+#
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOSTART_ONCE="true"
+ZSH_TMUX_AUTOCONNECT="true"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
- export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -73,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
- export SSH_KEY_PATH="~/.ssh/rsa_id"
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -83,6 +88,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#if [ \( "x$COLORTERM" = "xgnome-terminal" -o "x$COLORTERM" = "xTerminal" -o "x$COLORTERM" = "xxfce4-terminal" \) -a "x$TERM" = "xxterm" ] &&
+#        infocmp xterm-256color >/dev/null 2>&1; then
+#    TERM=xterm-256color
+#fi
 
-export NVM_DIR="/home/buker/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+dcleanup(){
+    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+# Terraform & Packer Paths.
+export PATH=~/terraform/:~/packer/:$PATH
+}
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/buker/.vimpkg/bin
