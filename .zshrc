@@ -71,9 +71,10 @@ export LANG=en_US.UTF-8
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='vim'
  fi
-
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -104,6 +105,14 @@ function prev() {
 	    sh -c "pet new `printf %q "$PREV"`"
     }
 
+function pet-select() {
+	  BUFFER=$(pet search --query "$LBUFFER")
+	    CURSOR=$#BUFFER
+	      zle redisplay
+      }
+      zle -N pet-select
+      stty -ixon
+      bindkey '^s' pet-select
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias bat='docker run -it --rm -e BAT_THEME -e BAT_STYLE -e BAT_TABS -v "$(pwd):/myapp" danlynn/bat'
