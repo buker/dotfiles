@@ -51,7 +51,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git terraform docker aws tmux debian sudo kubectl )
+plugins=(git terraform docker aws tmux debian sudo kubectl)
 #PLUGIN CONFIGURATION
 #
 ZSH_TMUX_AUTOSTART="true"
@@ -115,6 +115,7 @@ function pet-select() {
       bindkey '^s' pet-select
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source ~/.additional.zshrc 2> /dev/null
 alias bat='docker run -it --rm -e BAT_THEME -e BAT_STYLE -e BAT_TABS -v "$(pwd):/myapp" danlynn/bat'
 
 alias ctop="docker run --rm -ti --name=ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
