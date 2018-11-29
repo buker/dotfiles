@@ -94,6 +94,9 @@ export VISUAL=/usr/bin/vim
 #    TERM=xterm-256color
 #fi
 
+# spaceship config
+SPACESHIP_EXIT_CODE_SHOW=true
+SPACESHIP_TIME_SHOW=true
 
 function dcleanup(){
     docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
