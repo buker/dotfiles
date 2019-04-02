@@ -50,8 +50,8 @@ ZSH_THEME="spaceship"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git terraform docker aws tmux debian sudo kubectl)
+# Add wisely, as too many plugins slow down shell startup.3
+plugins=(git terraform docker aws tmux debian sudo kubectl kubectx fzf-zsh zsh-autosuggestions zsh-syntax-highlighting)
 #PLUGIN CONFIGURATION
 #
 ZSH_TMUX_AUTOSTART="true"
